@@ -19,5 +19,8 @@ class TestOptions(BaseOptions):
         parser.set_defaults(model='test')
         # To avoid cropping, the load_size should be the same as crop_size
         parser.set_defaults(load_size=parser.get_default('crop_size'))
+        parser.add_argument('--use_ddim', action='store_true', help='use DDIM sampling instead of DDPM')
+        parser.add_argument('--ddim_steps', type=int, default=50, help='number of DDIM steps for inference')
+
         self.isTrain = False
         return parser
